@@ -1,0 +1,66 @@
+<html>
+    <head>
+      	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+	<script>
+    	function getContactsFromNativeCode() {  
+  			//iOS
+  			if (window.webkit != undefined) {
+        		window.webkit.messageHandlers.getContacts.postMessage({});
+            }
+  
+  			//Android
+  			if (window.android != undefined) {
+        		window.android.getContacts();
+            }
+        }
+        function contactCount(count) {
+        	var title = document.getElementById("title");
+            title.innerHTML = count + ' Contact(s)';
+        }
+        
+        function titleToColor(color) {
+        	var title = document.getElementById("title");
+            title.style.color = color;
+        }
+        
+        function scanQRCode() {  
+  			//iOS
+  			if (window.webkit != undefined) {
+        		window.webkit.messageHandlers.scanQRCode.postMessage({});
+            }
+  
+  			//Android
+  			if (window.android != undefined) {
+        		window.android.scanQRCode();
+            }
+        }
+        
+        function callbackQRCode(obj) {
+        	var title = document.getElementById("title");
+            title.innerHTML = obj.code;
+        }
+        
+        function dismissPopup() {  
+  			//iOS
+  			if (window.webkit != undefined) {
+        		window.webkit.messageHandlers.dismissPopup.postMessage({});
+            }
+  
+  			//Android
+  			if (window.android != undefined) {
+        		window.android.dismissPopup();
+            }
+        }
+
+    </script>
+	<body>
+    	<h1 id="title">Page Title</h1>
+		<button type="button" onclick="getContactsFromNativeCode()">Get Contacts</button>
+		<br><br>
+        <button type="button" onclick="scanQRCode()">Scan QR Code</button>
+        <br><br>
+		<button type="button" onclick="dismissPopup()">Dismiss Popup</button>
+    	<script> titleToColor('Green') </script>
+	</body>
+</html>
