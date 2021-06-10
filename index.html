@@ -15,8 +15,7 @@
             }
         }
         function contactCount(count) {
-        	var title = document.getElementById("title");
-            title.innerHTML = count + ' Contact(s)';
+			setTitle(count + ' Contact(s)')
         }
         
         function titleToColor(color) {
@@ -37,8 +36,15 @@
         }
         
         function callbackQRCode(obj) {
-        	var title = document.getElementById("title");
-            title.innerHTML = obj.qrCode;
+			setTitle(obj.qrCode);
+        }
+        
+        function callbackContacts(obj) {
+			if (obj.cached) {
+				setTitle(cachedContacts.length);
+			} else {
+				setTitle('NOT CACHED');
+			}
         }
         
         function dismissPopup() {  
@@ -52,6 +58,11 @@
         		window.android.dismissPopup();
             }
         }
+		
+		function setTitle(text) {
+			var title = document.getElementById("title");
+			title.innerHTML = text;
+		}
 
     </script>
 	<body>
