@@ -2,9 +2,11 @@
   <head>
     <script src="jquery-3.2.0.min.js" type="text/javascript"></script>
     <script>
-      $.getJSON( "sdk_version.json", function(obj) {
-        $.each(obj, function(key, value) {
-          $("h1").append("<h1>"+value+"</h1>");
+      $(document).ready(function () {
+        $.getJSON("sdk_version.json", function(obj) {
+          $.each(obj, function(key, value) {
+            $("h1").append("<h1>"+value+"</h1>");
+          });
         });
       });
     </script> 
