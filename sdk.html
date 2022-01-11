@@ -6,10 +6,8 @@
     <h1>VERSION </h1>
     <script>
       $(document).ready(function () {
-        $.getJSON("sdk_version.json", function(obj) {
-          $.each(obj, function(key, value) {
-            $("h1").append("<h1>"+value+"</h1>");
-          });
+        $.getJSON("sdk_version.json", function(json) {
+          $("h1").append("<h1>"+json.sdkVersion+"</h1>");
         });
       });
     </script> 
